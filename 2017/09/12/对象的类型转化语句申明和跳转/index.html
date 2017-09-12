@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="对象的类型转化语句申明和跳转"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">对象的类型转化语句申明和跳转</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-12</span>
+            <span class="time">22:04:20</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JavaScript/">#JavaScript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h1><p>JavaScript中的取值类型非常灵活，我们已经从布尔值看到这一点；当JavaScript期望使用一个布尔值的时候你可以提供任意类型值，JavaScript将根据需要自行转换类型。一些值（真值）转换为true，其他值（假值）转化为false。这在其他类型中同样适用：如果JavaScript期望使用一个字符串，他把给定的值将转换为字符串。如果JavaScript期望使用一个数字，它将把给定的值转化为数字（如果转化结果无意义它将返回NaN）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">10+&quot;objects&quot; //&quot;10 objects&quot;. 数字10转化成字符串</div><div class="line">&quot;7&quot;*&quot;4&quot;      //28; 两个字符串均转化成数字</div><div class="line">var n = 1 - &quot;x&quot;;    //NaN; 字符串“x”无法转换为数字</div><div class="line">n + &quot;objects&quot;   //&quot;NaN objects&quot; :</div></pre></td></tr></table></figure>
+<blockquote>
+<p>编程语言分为动态类型语言和静态类型语言，动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型，该语言会在第一次赋值给变量时，在内部将数据类型记录下来。Python，Ruby和JavaScript就是典型的动态类型语言。静态类型语言与动态类型语言刚好相反，它的数据类型是在编译期间检查的，也就是说在写程序时要声明所以变量的数据类型，C/C++是静态语言的典型代表，其他静态语言还有C#，JAVA等</p>
+</blockquote>
+<h1 id="语句声明"><a href="#语句声明" class="headerlink" title="语句声明"></a>语句声明</h1><p>函数申明语句通常出现在JavaScript代码的最顶层，也可以嵌套在其他函数体内。但在嵌套时，函数申明只能出现在所嵌套函数的顶部，也就是说，函数定义不能出现在if语句、while循环或其他任何语句中，正是由于函数声明位置的这种限制，ECMAScript标准规范并没有将函数申明归类为真正的语句。有一些JavaScript实现的确允许在出现语句的地方都可以进行函数声明，但是不同的实现在细节处理方式上有很大差别，因此将函数声明放在其他的语句内的做法并不具备可移植性。 尽管函数<code>函数申明语句</code>和<code>函数定义表达式</code>包含相同的函数名，但二者仍然不同。两种方式都创建了新的函数对象，但函数申明语句中的函数名是一个变量名称，变量指向函数对象。 和通过var申明变量一样。函数定义语句中的函数被显式的”提前”到了脚本或函数的顶部。因此他们在整个脚本和函数内部是可见的。使用var的话，只有变量申明提前了–变量的初始化代码仍然在原来的位置。然而使用函数申明语句的话，函数名称和函数体均提前：脚本中所有函数和函数中所有嵌套的函数都会在当前上下文中其他代码之前申明，也就是说，可以在申明一个JavaScript函数之前调用它 和var语句一样，函数申明语句创建的变量也是无法删除的，但是这些变量不是只读的，变量值可以重写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">var f = function(x)&#123; //函数定义表达式</div><div class="line">  return x+1;</div><div class="line">&#125;</div><div class="line">function f(x)&#123; //函数声明语句</div><div class="line">  return x+1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(typeof(fn)); // function</div><div class="line">   fn(&apos;abc&apos;); // abc</div><div class="line"></div><div class="line"></div><div class="line">   console.log(typeof(fnx)); // undefined</div><div class="line"></div><div class="line">   if(fnx)</div><div class="line">       fnx(&apos;abc&apos;);  // will not execute</div><div class="line">   else</div><div class="line">       console.log(&apos;fnx is undefined&apos;); // fnx is undefined</div><div class="line"></div><div class="line">   // 函数语句</div><div class="line">   function fn(str)</div><div class="line">   &#123;</div><div class="line">       console.log(str);</div><div class="line">   &#125;;</div><div class="line"></div><div class="line">   // 表达式定义</div><div class="line">   var fnx=function(str)</div><div class="line">   &#123;</div><div class="line">       console.log(str+ &apos; from fnx&apos;);</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
+<h1 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h1><p>JavaScript中另一类语句是跳转语句。从名称就可以看出，它使得JavaScript的执行可以从一个位置跳转到另一个位置。</p>
+<ul>
+<li>break语句是跳转到循环体或者其他语句的结束。</li>
+<li>continue语句是终止本次循环的执行并开始下一次循环的执行。 JavaScript中的语句可以命名或者带有标签，break和continue可以标识目标循环或者其他语句标签</li>
+<li>return语句让解释器跳出函数体的执行，并提供本次调用的返回值。</li>
+<li>throw语句是触发或者”抛出”一个异常，他是与try/catch/finally语句一同使用的。这些语句指定了处理异常的代码逻辑。这是一种复杂的跳转语句，当抛出一个异常的时候，程序将跳转至最近的闭合异常处理程序，这个异常处理产能徐可以是在同一个函数中或者在更高层的调用栈中</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

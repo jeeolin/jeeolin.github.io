@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="属性的查询和设置"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">属性的查询和设置</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-12</span>
+            <span class="time">22:04:20</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JavaScript/">#JavaScript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>我们可以通过点（.）或者方括号（[]）运算符来获取属性的值。运算符左侧应当是一个表达式，它返回一个对象。对于电（.）来说，右侧必须是一个以属性名称命名的简单标识符。对于方括号来说（[]）,方括号必须是一个计算结果为字符串的表达式，这个字符串就是属性的名字和查询属性值的写法一样，通过点和方括号也可以创建属性或给属性赋值，但需要将它们放在赋值表达式的左侧。</p>
+<p>在ECMAScript3中，点运算符后的标识符不能是保留字，比如，o.for或者o.class是非法的，因为for是JavaScript的关键字，class是保留字。如果一个对象的属性名是保留字。则必须使用方括号的形式访问它们，比如o[“for”]和o[“class”]。ECMAScript5对此放宽了限制（包括ECMAScript3的某些实现），可以在点运算符后直接使用保留字。</p>
+<p>当使用方括号时，我们说方括号内的表达式必须返回字符串。其实更严格的讲，表达式必须返回字符串或返回一个可以转换成字符串的值，使用数字的情况是非常常见的。</p>
+<h1 id="作为关联数组的对象"><a href="#作为关联数组的对象" class="headerlink" title="作为关联数组的对象"></a>作为关联数组的对象</h1><p>下面两个JavaScript表达式的值相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">object.property</div><div class="line">object[&quot;property&quot;]</div></pre></td></tr></table></figure>
+<p>第一中语法使用点运算符和一个标识符，这和C和Java中访问一个结构体或对象的静态字段非常类似。第二种语法使用方括号和一个字符串，看起来很像数组，知识这个数组元素时通过字符串索引而不是数字索引。这种数组就是我们所说的关联数组，也称做散列，映射或字典。JavaScript对象都是关联数组。</p>
+<p>在C,和C++和Java和一些强类型（strong typed）语言中，对象只能拥有固定数目的属性，并且这些属性名称必须提前定义好。由于JavaScript是弱类型语言，因此不必遵循这条规定，在任何时候对象中程序都可以创建任意数量的属性。但当通过点运算符（.）访问对象属性的时，属性名用一个标识符来表示。标识符必须直接出现在JavaScript程序中，它们不是数据类型，因此程序无法修改它们。 反过来讲，当通过[]来访问对象的属性时，属性名通过字符串来表示。字符串是JavaScript的数据类型，在程序运行时可以修改和创建它们。因此在JavaScript中使用下面这种代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var addr = &quot;&quot;;</div><div class="line">for(1=0;i&lt;4;i++)&#123;</div><div class="line">  addr+=customer[&quot;address&quot;+i+&apos;\n&apos;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码读取customer对象的address0，address1，address2，address3属性，并将它们连接起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function addstock(protfolio,stockname,shares)&#123;</div><div class="line">  portfolio[stockname] = shares;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用数组说明了可以使用for/in循环来表里关联数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function getvalue(protfolio)&#123;</div><div class="line">  var total = 0.0;</div><div class="line">  for(stock in protfolio)&#123;            //便利portfolio中的每只股票</div><div class="line">    var shares = portfolio[stock];    //得到每只股票的份额</div><div class="line">    var price = getquote(stock);      //查找股票价格</div><div class="line">    total += shares * price;          //将结果累加到total中</div><div class="line">  &#125;</div><div class="line">  return total;                       //返回total的值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>javaScript对象具有”自有属性”，也有一些属性是从原型对象继承而来的。为了更好地理解这种继承，必须更深入地了解属性访问的细节。</p>
+<p>假设要查询对象o的属性x，如果o中不存在x，那么将会继续在o的原型对象中查询属性x。如果原型对象中也没有x，但这个原型对象也有原型，那么继续在这个原型对象的原型上执行查询，直到找到x或者查到一个原型是null的对象为止。可以看到，对象的原型属性构成一个”链”，通过这个”链”可以实现属性的继承。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var o= &#123;&#125; //o从Object.prototype继承对象的方法</div><div class="line">o.x=1;    //给o定义一个属性x</div><div class="line">var p = inherit(o); //p继承o和Object.prototype</div><div class="line">p.y = 2;  //给p定义一个属性y</div><div class="line">var q = inherit(p)；//q继承p和o和Object.prototype</div><div class="line">q.z = 3;  //给q定义一个属性z</div><div class="line">var s = q.toString(); //toString继承自Object.prototype</div><div class="line">q.x + q.y // =&gt;3:x和y分别继承自o和p</div></pre></td></tr></table></figure>
+<p>现在假设给对象o的属性x赋值，如果o中已经有属性x（这个属性不是继承来的），那么这个赋值操作只改变这个已有属性x的值。如果o中不存在属性x，那么赋值操作给o添加一个新属性x。如果之前o继承自属性x， 那么这个继承的属性就被新创建的同名属性覆盖了。</p>
+<p>属性赋值操作首先检查原型链，以此判定是否允许赋值操作 。例如，如果o继承自一个只读属性x，那么赋值操作是不允许的。如果允许属性赋值操作，它也总是在原始对象上创建属性或对已有的属性赋值，而不会去修改原型链 <strong>在javaScript中，只有在查询属性时才体会到继承的存在，而设置属性则和继承无关，这是javaScript的一个重要特性，该特性让程序员可以有选择地覆盖继承的属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var unitcircle = &#123;r:1&#125;;         //一个用来继承的对象</div><div class="line">var c = inherit (unitcircle);   //c继承属性r</div><div class="line">c.x = 1; c.y=1;                 //c定义两个属性</div><div class="line">c.r = 2;                        //c覆盖继承来的属性</div><div class="line">unitcircle.r;                   //=&gt;1，原型对象没有修改</div></pre></td></tr></table></figure>
+<p>属性赋值要么失败，好么创建一个属性，要么在原始对象中设置属性，但有一个例外，如果o继承自属性x，而这个属性是一个具有setter方法的accessor属性那么这时将调用setter方法而不是给o创建一个属x。 需要注意的是，setter方法是由对象o调用的，而不是定义这个属性的原型对象调用的。因此如果setter方法定义任意属性，这个操作只是针对o本身，并不会修改原型链。</p>
+<h1 id="属性访问错误"><a href="#属性访问错误" class="headerlink" title="属性访问错误"></a>属性访问错误</h1><p>属性访问并不是总返回或设置一个值。 查询一个不存在的属性并不会报错，但是如果对象不存在，那么试图查询这个不存在的对象的属性就会报错。 给null和undifined设置属性也会报类型错误。给其他值设置属性也不总是成功，有一些属性是只读的，不能重新赋值，有一些对象不允许新增属性。 在这些场景下给对象o设置属性p会失败：</p>
+<ul>
+<li>o中的属性p是只读的：不能给只读属性重新赋值（defineProperty（）方法中有一个例外，可以对可配置的只读属性重新赋值）。</li>
+<li>o中的属性p是继承性，且他是只读的：不能通过同名自有属性覆盖只读的继承属性。</li>
+<li><p>o中不存在自有属性p：o没有使用setter方法继承属性p，并且o的可扩展性是false。如果o中不存在p， 而且没有setter方法可供调用，则p一定会添加至o中。但如果o不是可扩展的，那么在o中不能定义新属性。</p>
+<h4 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h4><p>delete预算符可删除对象的属性。它的操作数应当是一个属性访问表达式。值得注意的是delete只是断开属性和宿主对象的联系，而不会去操作属性中的属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">delete book.author;         //book不再有属性author</div><div class="line">delete book[&quot;main title&quot;];  //book也不再有属性“main title”</div></pre></td></tr></table></figure>
+<p>delete运算符只能删除自有属性，不能删除继承属性（要删除继承属性必须从定义这个属性的原型对象上删除它，而且会影响到所有继承自这个原型的对象） 当delete表达式删除成功或没有任何副作用（比如删除不存在的属性）时，它返回true。如果delete后不是一个属性访问表达式，delete同样返回true； delete不能删除那些可配置性为false的属性（尽管可以删除不可扩展对象的可配置属性）。某些内置对象的属性是不可配置的，比如通过变量声明和函数申明创建的全局对象的属性。在严格模式中，删除一个不可配置的属性会报一个类型错误</p>
+<h5 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h5><p>JavaScript 对象可以看做属性的集合，我们经常会检测集合中成员的所属关系–判断某个属性是否存在于某个对象中。可以通过in运算符，hasOwnPreperty()和propertyIsEnumerable()方法来完成这个工作，甚至仅通过属性查询也可以做到这一点。 除了使用in运算符之外，另外一种更简便的方法是使用”!==”判断一个属性是否undefined in可以区分不存在的属性和存在但值为undefined的属性。 注意，这个判断运算符是”!==”而不是”!=”。”!==”可以区分undefined和null。有时则不必作这种区分</p>
+<h5 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h5><p>遍历对象的属性，通常使用for/in循环遍历。for/in循环可以在循环中遍历对象中的所有可枚举的属性（包括自有属性和继承的属性），吧属性名称复制给循环变量。对象继承的内置方法不可枚举的，但在胆码中给对象添加的属性都是可枚举的（除非用一个方法把对象转换成不可枚举的） 除了for/in循环之外，ECMAScript5定义了两个用以枚举属性名称的函数，第一个是Object.keys()，它返回一个数组，这个数组由丢向中可枚举的自有属性的名称组成，它的工作原理和例中keys()类似。</p>
+<h5 id="属性的getter和setter"><a href="#属性的getter和setter" class="headerlink" title="属性的getter和setter"></a>属性的getter和setter</h5><p>对象属性是由名字，值和一组特性构成的。在ECMAScript5中，属性值可以用一个或两个方法替代，这两个方法就是getter和setter，由getter和setter定义的属性称作”存取器属性”，它不同于”数据属性”，数据属性只有一个简单的值。 当程序查询存取器属性的值时，JavaScript调用getter方法（无参数）。这个方法的返回值就是属性存取表达式的值。当程序设置一个存取器属性的值时，JavaScript调用setter方法，将赋值表达式右侧的值当做参数传入setter，某种意义上来说，这个方法负责”设置”属性值，可以忽略setter方法的返回值 和数据属性不同，存取器属性不具有可写性。如果属性同时具有getter和setter方法，那么它是一个读/写属性。如果它只有getter方法。那么它是一个只读属性，如果它只有setter方法，那么它是一个只写属性（数据属性中有一些例外），读取只写属性总是返回undefined 定义存取器属性最简单的方法是使用对象直接量语法的一种扩展写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var o = &#123;</div><div class="line">//普通的数据属性</div><div class="line">data_prop:value,</div><div class="line"></div><div class="line">//存取器属性都是成对定义的函数</div><div class="line">get accessor_prop()&#123;/*这里是函数体*/&#125;,</div><div class="line">set accessor_prop(value)&#123;/*这里是函数体*/&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>存取器属性定义一个或两个和属性同名的函数，这个函数定义没有使用function关键字，而是使用get（或）set。注意，这里没有使用冒号将属性名和函数体分隔开，但在函数体的结束和下一个方法或数据属性之间有逗号分隔。</p>
+</li>
+</ul>
+<p>和数据属性一样，存取器属性是可以继承的。</p>
+<h1 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h1><p>除了包含名字和值之外，属性包括一些标识它们可写，可枚举和可配置的特性。在ECMAScript3 中无法设置这些特性，所有通过ECMAScript3的程序创建的属性都是可写的，（未完）</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

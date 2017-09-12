@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="对象的三个属性"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">对象的三个属性</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-12</span>
+            <span class="time">22:04:20</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/note/">note</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JavaScript/">#JavaScript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>每一个对象都有与之相关的原型，类和可拓展性。那么他们有什么作用，如何查询和设置他们。</p>
+<h1 id="原型属性"><a href="#原型属性" class="headerlink" title="原型属性"></a>原型属性</h1><p>对象的原型属性是用来继承属性，这个属性非常重要，我们经常把”o的原型属性”直接叫做”o的原型”。 在ECMAScript 5中，将对象作为参数传入Object.getPrototype（）可以查询它的原型。在ECMAScript3中，则没有与之等价的函数，但经常使用表达式o.constructor.prototype来检测一个对象的原型，通过new表达式创建的对象，通常继承一个constructor属性，这个属性指代创建这个对象的构造函数，这种方法来检测对象原型的方式并不可靠，通过对象直接量或Object.create()创建的对象包含一个名为constructor的属性，这个属性指代Object()构造函数，因此，constructor.prototype才是对象直接量的真正的原型，但对于通过Object.create()创建的对象则往往不是这样。 <strong>要想检测一个对象是否是另一个对象的原型（或处于原型链中），请使用isPrototypeOf()方法</strong> isPrototypeOf()函数的实现功能和instanceOf()运算符非常类似。</p>
+<h1 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h1><p>对象的类属性是一个字符串，用以表示对象的类型信息。ECMAScript3和ECMAScript5都未提供设置这个属性的方法，并只有一种间接的方法可以查询它。默认的toString()方法（继承Object.prototype）返回了如下这种格式的字符串： [object class] 因此，要想获得对象的类，可以调用对象的toString()方法，然后提取已返回字符串的第8个到倒数第二个位置之间的字符。不过让人感觉棘手的是，很多对象继承的toString()方法重写了，为了能调用正确的toString()版本，必须间接地调用Function.call()方法，下例中的classof()函数可以返回传递给他的任意对象的类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">classof()函数</div><div class="line">function classof(o)&#123;</div><div class="line">  if(o===null)return &quot;Null&quot;;</div><div class="line">  if(o===undefined)return &quot;Undefined&quot;;</div><div class="line">  return Object.prototype.toString.call(o).slice(8,-1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h1><p>对象的可拓展性用以表示是否可以给对象添加新属性，所有内置对象和自定义对象都是显式可拓展的，宿主对象的可拓展性是由JavaScript引擎定义的。在ECMAScript5中，所有的内置对象和自定义对象都是可拓展，除非将它们转换为不可拓展的，同样，宿主对象的可拓展性也是由实现ECMAScript5 的JavaScript引擎定义的。 ECMAScript5定义了用来查询和设置对象可扩展性的函数，通过将对象传入Object.esExtensible(),来判断该对象是否是可拓展的。如果想将对象转换为不可扩展的，需要调用Object.preventExtensions(),将待转换的对象作为参数传出去。注意，一旦将对象装换为不可扩展的，就无法再将其转换回可扩展的了。同样需要注意的是，preventExtensions()只影响到对象本身的可扩展性。如果给一个不可扩展的对象的原型添加属性，这个不可拓展的对象同样会继承这些新属性。 可扩展属性的目的是将对象”锁定”，以避免外界的干扰。对象的可扩展性通常和属性的可配置与可写性配合使用，ECMAScript5定义的一些函数可以更方便地设置多种属性。</p>
+<h2 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h2><p>对象序列化是指对象的状态转换为字符串，也可将字符串还原为对象，ECMAScript5提供了内置函数JSON.stringify()和JSON.parse()用来序列化和还原JavaScript对象。这些方法都使用JSON作为数据交换格式，JSON的全称是”JavaScript Object Notation”—JavaScript对象表示法，它的语法和JavaScript对象与数组直接量的语法非常接近 JSON的语法是JavaScript语法的子集，它并不能表示JavaScript里的所有值。支持对象，数组，字符串，无穷大数字，true，false和null，并且他们可以序列化和还原。NaN，Infinity和-Infinity序列化的结果是null，日期对象序列化的结果是ISO格式的日期字符串（参照Date.toJSON（）函数），但JSON.parse()依然保留他们的字符串形态，而不会将它们还原为原始日期对象。函数，RegExp，Error对象和undefined值不能序列化和还原。JSON.stringify()只能序列化对象可枚举的自有属性。对于一个不能序列化的属性来说，在序列化后的输入的输出字符串中会将这个属性省略掉。JSON.stringify()和JSON.parse()都可以接收第二个可选参数，通过传入需要序列化或还原的属性列表来定制自定义的序列化或还原操作。</p>
+<h2 id="对象方法"><a href="#对象方法" class="headerlink" title="对象方法"></a>对象方法</h2><p>所有JavaScript对象都是Object.prototype继承属性(除了那些不通过原型显式创建的对象)。这些继承属性主要是方法，</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
