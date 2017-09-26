@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="ECMAScript 5中的数组方法"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://jeeolin.tk"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">ECMAScript 5中的数组方法</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-26</span>
+            <span class="time">22:23:22</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/JavaScript/">JavaScript</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Note/">#Note</a> <a class="tag" href="/tags/Array/">#Array</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>ECMAScript定义了9个新的数组方法来遍历，映射，过滤，检测，简化和搜索数组。<br>ECMASCript5中的数组方法概述。首先，大多数方法的第一个参数接收一个函数，并且对数组的每一个元素（或一些元素）调用一次该函数。如果是稀疏函数，对不存在的元素不调用传递的参数。在大多数情况下，调用提供的函数使用三个参数：数组元素，元素的索引和数组本身。通常，只需要第一个参数值，可以忽略后两个参数。大多数ECMAScript5 数组方法的第一个参数是一个函数，第二个参数是可选的。如果有第二个参数，则调用的函数被看做是第二个参数的方法，也就是说，在调用函数时传递进去的第二个参数作为它的this关键字的值来使用。被调用的函数的返回值非常重要，但是不同的方法处理返回值的方式也不一样。ECMAScript 5中的数组方法都不会修改它们的调用原始数组。当然，传递给这些方法的函数时可以修改这些数组的。</p>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h2><p>forEach()方法从头至尾遍历数组，为每个元素调用指定的函数。如上说述，传递的函数作为forEach()的第一个参数。然后forEach()的第一个参数。然后forEach()使用三个参数调用该函数：数组元素，元素的索引和数组本身。如果只关心数组元素的值，可以编写只有一个参数的函数–额外的参数将忽略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var data=[1,2,3,4,5];//要求和的数组</div><div class="line">//计算数组元素的和值</div><div class="line">var sum=0;//初始为0</div><div class="line">data.forEach(function(value)&#123;sum+=value;&#125;);//将每个值累加到sum上</div><div class="line">sum   //=&gt;15</div><div class="line">// 每个数组元素的值自加1</div><div class="line">data.forEach(function(v,i,a)&#123;a[i]=v+1;&#125;);</div><div class="line">data    //=&gt;[2,3,4,5,6]</div></pre></td></tr></table></figure></p>
+<p>注意，forEach()无法再所有元素都传递给调用的函数之前终止遍历。也就是说，没有像for玄幻中使用的相应的break语句。如果要提前终止，必须把forEach()方法放在一个try块中，并能抛出一个异常。如果forEach()调用的函数抛出foreach.break异常。循环会提前终止：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function foreach(a,f,t)&#123;</div><div class="line">  try&#123;a.forEach(f,t);&#125;</div><div class="line">  eatch(e)&#123;</div><div class="line">    if(e===foreach.break) return;</div><div class="line">    else throw e;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">foreach.break = new Error(&quot;StopIteration&quot;);</div></pre></td></tr></table></figure></p>
+<h2 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h2><p>map()方法将调用的数组的每个元素传递给指定的函数，并返回一个数组，它包含该函数的返回值。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a=[1,2,3];</div><div class="line">b=a.map(function(x)&#123; return x*x&#125;);</div></pre></td></tr></table></figure></p>
+<p>传递给map()的函数调用方式和传递给forEach()的函数的调用方式一样，但传递给map()的函数应该有返回值。注意map()返回的是新数组：它不修改调用的数组。如果是稀疏数组，返回的也是相同方式的稀疏数组：它们具有相同的长度，相同的缺失元素</p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><p>filter()方法返回的数组元素是调用的数组的一个子集。传递的函数是用来逻辑判定的：该函数返回true或false。调用判定函数就像forEach()和map()一样。如果返回值为true或者false。调用判定函数就像调用forEach()和map()一样。如果返回值为true或能转化为true的值，那么传递给判定函数的元素就是整个子集的成员，它将被添加到一个作为返回值得数组中。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=[5,4,3,2,1];</div><div class="line">smallvalues = a.filter(function(x)&#123; return x&lt;3&#125;);</div><div class="line">everyother = a.filter(function(x,i) &#123;return i%2==0&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意:filter()会跳过稀疏数组中缺少的元素，它的返回数组总是稠密的。为了压缩稀疏数组的空缺，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var dense = sparse.filter(function()&#123;return true;&#125;);</div></pre></td></tr></table></figure></p>
+<p>甚至，压缩空缺并删除undefined和null元素，可以这样使用filter():<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a= a.filter(function(x)&#123;return x!==undefined &amp;&amp; x !=null;&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="every-和some"><a href="#every-和some" class="headerlink" title="every()和some()"></a>every()和some()</h2><p>every()和some()方法是数组的逻辑判定:它们对数组元素应用的指定的函数进行判定，返回true或false。<br>every()方法就像数学中的”针对所有”的量词：而且当且仅当针对数组中的所有元素调用判定函数都返回true，他才返回true；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=[1,2,3,4,5];</div><div class="line">a.every(function(x)&#123; return x&lt;10;&#125;) // =&gt;true 所有的值&lt;10</div><div class="line">a.every(function(x)&#123;return x%2 ===0;&#125;)//=&gt;false 不是所有的值都是偶数</div></pre></td></tr></table></figure></p>
+<p>some()方法就像数学的”存在”量词；当数组中至少有一个元素调用判定函数返回true，他就返回true；并且当且仅当数值中的所有元素调用判定函数都是false，他在返回false；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=[1,2,3,4,5];</div><div class="line">a.some(function(x)&#123; return x%2 ===0;&#125;) // =&gt;true 数组中含有偶数</div><div class="line">a.some(isNaN)//=&gt;false a不包含非数值元素</div></pre></td></tr></table></figure></p>
+<p>注意，一旦every()和some()确认该返回什么值它们就会停止遍历数组元素。some()在判定函数第一次返回true后就返回true，但如果判定函数一直返回false，它将会遍历整个数组，every()恰好相反：它在判定函数第一次返回false后就返回false，但如果判定函数一直返回true，它将会遍历整个数组。注意，根据数学上的惯例，在空数组上调用时，every()返回true，some()返回false。</p>
+<h2 id="reduce-和reduceRight"><a href="#reduce-和reduceRight" class="headerlink" title="reduce()和reduceRight()"></a>reduce()和reduceRight()</h2><p>reduce()和reduceRight()方法使用指定的函数将数组元素进行组合，生成单个值。这在函数式编程中是常见的操作，也可以称为”注入”和”折叠”。举例说明它是如何工作的；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a=[1,2,3,4,5]</div><div class="line">var sum=a.reduce(function(x,y) &#123;return x+y&#125;,0);// 数组求和</div><div class="line">var product=a.reduce(function(x,y) &#123;return x*y&#125;,1);// 数组求积</div><div class="line">var max = a.reduce(function(x,y)&#123;return(x&gt;y)?x:y&#125;);//求最大值</div></pre></td></tr></table></figure></p>
+<p>reduce()需要两个参数。一个是执行化简操作的函数。化简函数的任务就是用某种方法把两个值组合或简化为一个值，并返回简化后的值。在上述例子中，函数通过加法、乘法或取最大值的方法组合两个值，第二个(可选)的参数是一个传递给函数的初始值。<br>reduce()使用的函数与forEach()和map()使用的函数不同。比较熟悉的是，数组元素、元素的索引和数组本身将作为第2~4个参数传递给函数。第一个参数是到目前为止的简化操作积累的结果。第一次调用函数时，第一个参数是一个初始值，它就是传递给reduce()的第二个参数。在接下来的调用中，这个值就是上一次简化函数的返回值。当不指定 初始值调用reduce()时，它将使用数组的第一个元素作为其初始值。这意味着第一次调用简化函数就使用了第一个和第二个数组元素作为其第一个和第二个参数。<br>在空数组上，不带初始值调用reduce()将导致类型错误异常。如果调用它的时候只有一个值–数组只有一个元素并且没有指定初始值，或者有一个空数组并且指定一个初始值–reduce()只是简单地返回那个值而不会调用化简函数。<br>reduceRight()的工作原理和reduce()一样，不同的是它按照数组索引从高到低（从右到左）处理数组，而不是从低到高。如果化简操作的优先顺序是从右到左，你可能想使用它，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = [2,3,4]</div><div class="line">var big = a.reduceRight(function(accumlator,value)&#123;</div><div class="line">        return Math.pow(value,accumlator);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="indexOf-和lastIndexOf"><a href="#indexOf-和lastIndexOf" class="headerlink" title="indexOf()和lastIndexOf()"></a>indexOf()和lastIndexOf()</h2><p>indexOf()和lastIndexOf()搜索整个数组中具有给定值得元素，返回找到的第一个元素的索引或者如果没有找到就返回-1。indexOf()从头到尾搜索。而lastIndexOf()则反向搜索。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a =[0,1,2,1,0];</div><div class="line">a.indexOf(1)  //=&gt;1:a[1]是1</div><div class="line">a.lastIndexOf(1) //=&gt;3:a[3]是1</div><div class="line">a.indexOf(3) //=&gt;-1:没有值为3的元素</div></pre></td></tr></table></figure></p>
+<p>indexOf()和lastIndexOf()方法不接收一个函数作为其参数。第一个参数是需要搜索的值，第二个参数是可选的：它指定数组中的一个索引，从哪里开始搜索。如果省略该参数，indexOf()从头开始搜索，而lastIndexOf()从末尾开始搜索。第二个参数也可以是负数，它代表相对数组末尾的偏移量，对于splice()方法</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a> -->
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

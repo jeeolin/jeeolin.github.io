@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="闭包"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://jeeolin.tk"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">闭包</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-26</span>
+            <span class="time">22:23:22</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/JavaScript/">JavaScript</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Note/">#Note</a> <a class="tag" href="/tags/Function/">#Function</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>和其他大多数现代编程语言一样，JavaScript也采用词法作用域，也就是说，函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时决定的。为了实现这种词法作用域，JavaScript函数对象内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象可以通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中称为”闭包” 从技术的角度 讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链。定义大多数函数时的作用域链在调用函数时依然有效，但这并不影响闭包。当调用函数是闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链时，事情就变得非常微妙。当一个函数嵌套了另外一个函数，外部函数将嵌套的函数对象作为返回值返回的时候往往会发生这种事情。有很多强大的编程技术都利用到了这类嵌套的函数闭包。以至于这种编程模式在JavaScript中非常常见。当你第一次碰到闭包时可能会觉得非常让人费解，一旦你理解掌握了闭包之后，就能非常自如地使用它了，了解这一点至关重要。 理解闭包首先要了解嵌套函数的词法作用域规则。看一下下列代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var scope = &quot;global scope&quot;;       //全局变量</div><div class="line">function checkscope()&#123;</div><div class="line">  var scope = &quot;local scope&quot;;      //局部变量</div><div class="line">  function f() &#123;return scope;&#125;    //在作用域中返回这个值</div><div class="line">  return f();</div><div class="line">&#125;</div><div class="line">checkscope();                     //=&gt;&quot;local scope&quot;</div></pre></td></tr></table></figure>
+<p>checkscope()函数声明了一个局部变量，并定义了一个函数f(),函数f()返回了这个变量的值，最后将函数f()的执行结果返回，你应当非常清楚为什么调用checkscope()会返回”local scope”。现在我们对这对代码进行改动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var scope = &quot;global scope&quot;;     //全局变量</div><div class="line">function checkscope()&#123;          </div><div class="line">  var scope = &quot;local scope&quot;;    //局部变量</div><div class="line">  function f() &#123;return scope;&#125;  //在作用域中返回这个值</div><div class="line">  return f;</div><div class="line">&#125;</div><div class="line">checkscope()();                  //=&gt;注意这里的返回值还是&quot;local scope&quot;</div></pre></td></tr></table></figure>
+<p>在这段代码中，我们将函数内的一对圆括号移动到了checkscope()之后。checkscope()现在仅仅返回函数内嵌套的一个函数对象，而不是直接返回结果。在定义函数的作用域外面，调用这个嵌套的函数（包含最后一行代码的最后一对圆括号）会发生什么事情呢?</p>
+<p>回想依稀词法作用域的基本规则：JavaScript函数的执行用到了作用域链，这个作用域链是函数定义的时候创建的。嵌套函数f()定义在这个作用域链里，其中的变量scope一定是局部变量，不管在何时何地执行函数f()，这种绑定在执行f()时依然有效。因此最后一行代码返回”local scope”,而不是”global scope”。简言之，闭包的这个特性强大到令人吃惊；它们可以捕捉到局部变量(和参数),并一直保存下来，看起来这些变量绑定到了其他定义它们的外部函数。</p>
+<blockquote>
+<p>如果你理解了词法作用域的规则，你就能很容易地理解闭包：函数定义时的作用域链到函数执行时依然有效，然而很多程序员决定闭包非常难理解，因为他们在深入学习闭包的实现细节时将自己搞得晕头转向。他们觉得在外部函数中定义的局部变量在函数返回后就不存在了，那么嵌套的函数如何能调用不存在的作用域链呢？如果想搞清楚这个问题，你需要深入地了解类似C语言这种更底层的编程语言，并了解基于栈的cpu架构：如果一个函数的局部变量定义在CPU的栈中，那么当函数返回时他们那边的确就不存在了。 而我们将作用域链描述为一个对象列表，不是绑定的栈。每次调用JavaScript函数的时候，都会为之创建一个新的对象用来保存局部变量，把这个对象添加至作用域链中。当函数返回的时候，就从作用域链中将这个绑定变量的对象删除。如果不存在嵌套的函数，也没有其他引用指向这个绑定对象，它就会被当做垃圾回收掉。如果定义了嵌套的函数，每个嵌套的函数都各自对应一个作用域链，并且这个作用域链指向一个变量绑定对象。但如果这些嵌套函数对象在外部函数中保存下来，那么它们也会和所指向的变量绑定对象一样当做垃圾回收，但是如果这个函数定义了嵌套的函数，并将它作为返回值返回或者存储在某处的属性里，这时就会有一个外部引用指向这个嵌套的函数。它就不会被当做垃圾回收，并且他所指向的变量绑定对象也不会被当做垃圾回收</p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a> -->
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

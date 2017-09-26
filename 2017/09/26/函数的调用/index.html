@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Jeeo Lin">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="函数的调用"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="My Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://jeeolin.tk"/>
+  
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>My Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">函数的调用</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Artical
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/jeeolin">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:jeeolin@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Jeeo Lin</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-26</span>
+            <span class="time">22:23:22</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/JavaScript/">JavaScript</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Note/">#Note</a> <a class="tag" href="/tags/Function/">#Function</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h1><p>构成函数主体的JavaScript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有4种方式来调用JavaScript函数</p>
+<ul>
+<li>作为函数</li>
+<li>作为方法</li>
+<li>作为构造函数</li>
+<li>通过它们的call()和apply()方法间接使用</li>
+</ul>
+<h2 id="函数调用-1"><a href="#函数调用-1" class="headerlink" title="函数调用"></a>函数调用</h2><p>一个调用表达式 由多个函数表达式组成，每个函数表达式都是由一个函数对象和左圆括号、参数列表和右圆括号组成，参数列表是由逗号分隔的零个或多个参数表达式组成。如果函数表达式是一个属性访问表达式，即该函数是一个对象的属性或数组中的一个元素，那么它就是一个方法调用表达式 对于普通的函数调用，函数的返回值称为调用表达式的值。如果该函数返回是因为解释器到达结尾，返回值就是undefined。如果函数返回是因为解释器执行到一条return语句，返回值就是return之后的表达式的值，如果return语句没有值，则返回undefined。 根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this的值）是全局对象。然而，在严格模式下，调用上下文则是undefined 以函数形式调用的函数通常不适用this关键字。不过，”this”可以用来判断当前是否是严格模式。</p>
+<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>一个方法无非是个保存在一个对象的属性里的JavaScript函数。如果有一个函数f和一个对象o，则可以用下面的代码给o定义一个名为m()的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o.m = f;</div></pre></td></tr></table></figure>
+<p>给对象o定义方法m(),调用它时就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o.m();</div></pre></td></tr></table></figure>
+<p>或者，如果m()需要两个实参，调用起来则像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o.m(x,y);</div></pre></td></tr></table></figure>
+<p>对方法调用的参数和返回值的处理，和上面所描述的普通函数调用完全一致。但是，方法调用和函数调用有一个重要的区别，即：调用上下文。属性访问表达式由两部分组成：一个对象（本例中的o）和属性名称（m）。在像这样的方法调用表达式里，对象o成为调用上下文，函数体可以使用关键字this引用该对象。</p>
+<p>方法和this关键字是面向对象编程范例的核心。任何函数只要作为方法调用实际上都会传入一个隐式的实参–这个实参是一个对象，方法调用的母体就是这个对象。通常来讲，基于那个对象的方法可以执行多种操作，方法调用的语法已经很清晰地表明了函数将基于一个对象进行操作。</p>
+<blockquote>
+<p>方法链 当方法的返回值是一个对象，这个对象还可以再调用它的方法。这种方法调用序列中（通常称为”链”或者”级联”）每次的调用结果都是另外一个表达式的组成部分。比如，基于JQuery库，我们常常会看到这样的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; //找到所有的header，取得它们id的映射，转化为数组并对它们进行排序</div><div class="line">&gt; $(&quot;:header&quot;).map(function()&#123;return this.id&#125;).get().sort();</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>当方法并不需要返回值时，最好直接返回this。如果在API中一直采用这种方式（每个方法都返回this），使用API中一直采用这种方式（每个方法都返回this），使用API就可以进行’链式调用’风格的编程，在这种编程风格中，只要指定一次要调用的对象即可，余下的方法都可以基于此进行调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; shape.setX(100),setY(100),setSize(50).setOutline(&quot;red&quot;).setFill(&quot;blue&quot;).draw();</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>不要将方法的链式调用和构造函数的链式调用混为一谈。</p>
+</blockquote>
+<p>需要注意的是，this是一个关键字，不是变量，也不是属性名。JavaScript的语法不允许给this赋值。 和变量不同，关键字this没有作用域的限制，嵌套的函数不会从调用它的函数中继承this。如果嵌套函数作为方法调用，其中this的值指向调用它的对象。如果嵌套函数作为函数调用，其this值不是全局变量（非严格模式下）就是undefined（严格模式下）。很多人误以为调用嵌套函数时this会指向调用外层函数的上下文。如果你想访问这个外部函数的this值，需要将this的值保存在一个变量里，这个变量和内部函数都在一个作用域内。通常使用变量self来保存this，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var o = &#123;                         //对象o</div><div class="line">  m:function()&#123;                   //对象中的方法m()</div><div class="line">    var self = this;              //将this的值保存至一个变量中</div><div class="line">    console.log(this === o);      //输出true，this就是这个对象o</div><div class="line">    f();                          //调用辅助函数f()</div><div class="line">    function f()&#123;                 //定义一个嵌套函数f()</div><div class="line">      console.log(this === o);    //&quot;false&quot;：this的值时全局对象或undefined</div><div class="line">      console.log(self === o);    //&quot;true&quot;:self值外部函数的this值</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">o.m();                            //调用对象o的方法m()</div></pre></td></tr></table></figure>
+<h2 id="构造函数调用"><a href="#构造函数调用" class="headerlink" title="构造函数调用"></a>构造函数调用</h2><p>构造函数调用和普通函数调用以及方法调用在实参处理，调用上下文和返回值方面都有不同。 如果构造函数调用在圆括号内包含一组实参列表，先计算这些实参表达式，然后传入函数内，这和函数调用和方法调用时一致的。但如果构造函数没有形参，JavaScript构造函数调用的语法是允许省略实参列表和圆括号的。凡是没有形参的构造函数调用都可以省略圆括号，比如，下面这两行代码就是等价的；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var o = new Object();</div><div class="line">var o = new Object;</div></pre></td></tr></table></figure>
+<p>构造函数调用创建一个新的空对象，这个对象继承自构造函数的prototype属性。构造函数试图初始化这个新创建的对象，并将这个对象用作其调用上下文，因此构造函数可以使用this关键字来应用这个新创建的对象。注意，尽管构造函数看起来像一个方法调用，它依然会使用这个新对象作为调用上下文。也就是说，在表达式new o.m()中，调用上下文并不是o。 构造函数通常不适用return关键字，它们通常初始化新对象，当构造函数的函数体执行完毕时，它会显示返回。在这种情况下，构造函数调用表达式的计算结果就是这个新对象的值。然而如果构造函数显式的使用return语句返回一个对象，那么调用表达式的值就是这个对象。如果构造函数使用return语句返回一个对象，那么调用表达式的值就是这个对象，如果构造函数使用return语句但没有指定返回值，或者返回一个原始值，那么这时将忽略返回值，同时使用这个新对象作为调用结果。</p>
+<h2 id="间接调用"><a href="#间接调用" class="headerlink" title="间接调用"></a>间接调用</h2><p>JavaScript中的函数也是对象，和其他JavaScript对象没什么两样，函数对象也可以包含方法。两个方法都允许显式指定调用所需的this值，也就是说，任何函数可以作为任何对象的方法来调用，哪怕这个函数不是那个函数的方法，两个方法都可以指定调用的实参。call()方法使用它自有的实参列表作为函数的实参，apply()方法则要求以数组的形式传入参数。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a> -->
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
